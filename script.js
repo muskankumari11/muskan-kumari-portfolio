@@ -5,9 +5,6 @@ ScrollTrigger.config({
 });
 
 
-/* ================================================= */
-/* INITIAL SETTERS */
-/* ================================================= */
 
 function valueSetters() {
 
@@ -26,9 +23,6 @@ function valueSetters() {
 }
 
 
-/* ================================================= */
-/* REVEAL TEXT */
-/* ================================================= */
 
 function revealToSpan() {
 
@@ -57,9 +51,6 @@ revealToSpan();
 valueSetters();
 
 
-/* ================================================= */
-/* LOADER ANIMATION */
-/* ================================================= */
 
 const loaderTimeline = gsap.timeline();
 
@@ -104,10 +95,6 @@ loaderTimeline
     });
 
 
-/* ================================================= */
-/* HOME ANIMATION */
-/* ================================================= */
-
 function animateHomePage() {
 
     const tl = gsap.timeline();
@@ -134,13 +121,9 @@ function animateHomePage() {
 }
 
 
-/* ================================================= */
-/* CARD HOVER */
-/* ================================================= */
 
 function cardHoverEffect() {
 
-    // Mobile par cursor animation nahi chahiye
     if (window.innerWidth <= 768) {
         return;
     }
@@ -221,9 +204,6 @@ function cardHoverEffect() {
 cardHoverEffect();
 
 
-/* ================================================= */
-/* PROJECT ANIMATION */
-/* ================================================= */
 
 function projectAnimation() {
 
@@ -243,10 +223,7 @@ function projectAnimation() {
 
             trigger: "#work",
 
-            start: "top 80%",
-
-            toggleActions:
-                "play none none reverse"
+            start: "top 80%"
 
         }
 
@@ -292,12 +269,7 @@ function achievementAnimation() {
 
                     start: "top 90%",
 
-                    end: "top 60%",
-
-                    toggleActions:
-                        "play none none reverse",
-
-                    markers: false
+                    end: "top 60%"
                 }
             }
         );
@@ -341,12 +313,7 @@ function educationAnimation() {
 
                     start: "top 90%",
 
-                    end: "top 60%",
-
-                    toggleActions:
-                        "play none none reverse",
-
-                    markers: false
+                    end: "top 60%"
                 }
             }
         );
@@ -360,9 +327,6 @@ achievementAnimation();
 educationAnimation();
 
 
-/* ================================================= */
-/* PROJECT IMAGES */
-/* ================================================= */
 
 function imageAnimation() {
 
@@ -423,9 +387,6 @@ function imageAnimation() {
 imageAnimation();
 
 
-/* ================================================= */
-/* CONTACT ANIMATION */
-/* ================================================= */
 
 function endAnimation() {
 
@@ -445,10 +406,7 @@ function endAnimation() {
 
             trigger: ".etext",
 
-            start: "top 80%",
-
-            toggleActions:
-                "play none none reverse"
+            start: "top 80%"
 
         }
 
@@ -458,33 +416,3 @@ function endAnimation() {
 
 
 endAnimation();
-
-
-/* ================================================= */
-/* IMPORTANT - REFRESH */
-/* ================================================= */
-
-window.addEventListener("load", function () {
-
-    ScrollTrigger.refresh();
-
-});
-
-
-/* ================================================= */
-/* RESIZE REFRESH */
-/* ================================================= */
-
-let resizeTimer;
-
-window.addEventListener("resize", function () {
-
-    clearTimeout(resizeTimer);
-
-    resizeTimer = setTimeout(function () {
-
-        ScrollTrigger.refresh();
-
-    }, 300);
-
-});

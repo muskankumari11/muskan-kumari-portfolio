@@ -163,7 +163,7 @@ function edu() {
     tl1.from("#education .education-item h2", {   
         y: 150,
         stagger: 0.8,
-        duration: 2,
+        duration: 0.5,
         opacity: 0,
         ease: "power3.out"
     });
@@ -184,7 +184,7 @@ function achi() {
     tl1.from(".achievements .achievement-item h2", {
         y: 150,
         stagger: 0.8,
-        duration: 2,
+        duration: 0.5,
         opacity: 0,
         ease: "power3.out"
     });

@@ -1,9 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
 
-ScrollTrigger.config({
-    ignoreMobileResize: true
-});
-
 
 
 function valueSetters() {

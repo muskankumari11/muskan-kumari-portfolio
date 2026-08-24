@@ -1,28 +1,43 @@
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Gilroy;
-}
-html,body{
-    width: 100%;
-    height: 100%;
+    font-family: Gilroy, sans-serif;
 }
 
-#main{
+html,
+body {
     width: 100%;
+    min-height: 100%;
 }
 
-#loader{
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#main {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+/* ================= LOADER ================= */
+
+#loader {
     position: fixed;
+    inset: 0;
     width: 100%;
     height: 100vh;
-    background-color: #111;
+    background: #111;
     color: #fff;
-    z-index:99999;
+    z-index: 99999;
 }
 
-#loader h1{
+#loader h1 {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -34,239 +49,296 @@ html,body{
     font-weight: 500;
 }
 
-.reveal .parent{
-    display: flex;
-    justify-content: center;
-    overflow-y: hidden;
-    width: 100%;
-}
-
-.reveal .parent .child{
-    display: block;
-}
-
-.parent .child span{
-    display: inline-block;
-}
-#green{
+#loader #topheading {
     position: absolute;
-    top: 100%;
-    width: 100%;
-    height: 100vh;
-    background-color: #14CF93;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-#loader #topheading{
-    position: absolute;
-    top:5%;
-    left:50%;
-    transform: translate(-50%, 0);
-}
-
-#topheading h5{
+#topheading h5 {
     text-align: center;
     text-transform: uppercase;
     font-size: 11px;
     font-weight: 300;
 }
 
-#home{
-    height: 150vh;
+#green {
+    position: fixed;
+    top: 100%;
+    left: 0;
     width: 100%;
-    background-color: white;
+    height: 100vh;
+    background: #14CF93;
+    z-index: 99998;
 }
-#home #nav{
+
+
+/* ================= REVEAL ================= */
+
+.reveal .parent {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+.reveal .parent .child {
+    display: block;
+}
+
+.parent .child span {
+    display: inline-block;
+}
+
+
+/* ================= HOME ================= */
+
+#home {
+    width: 100%;
+    min-height: 150vh;
+    background: white;
+}
+
+#nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5vw;
+
     width: 100%;
     height: 100px;
+
+    padding: 0 5vw;
 }
 
-#nav a{
+#nav a {
     position: relative;
+
+    color: #111;
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: 300;
+
     font-size: 12px;
-    color:#111;
+    font-weight: 300;
 }
-#nav a .line{
+
+#nav a .line {
     position: absolute;
     bottom: 0;
+
     display: inline-block;
+
     width: 100%;
     height: 1px;
-    background-color: #111;
+
+    background: #111;
 }
 
-#line1{
+#line1 {
     left: 0;
-    width: 0%;
-     transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
-     transition-delay: .1s;
+    width: 0 !important;
+    transition: all cubic-bezier(.19, 1, .22, 1) 1s;
 }
-#line2{
+
+#line2 {
     right: 0;
     width: 100%;
-     transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    transition: all cubic-bezier(.19, 1, .22, 1) 1s;
 }
 
-#nav a:hover #line2{
+#nav a:hover #line2 {
     width: 0;
 }
-#nav a:hover #line1{
-    width: 100%;
+
+#nav a:hover #line1 {
+    width: 100% !important;
 }
 
-.row{
-    margin-top:5vw;
+
+/* ================= HERO ================= */
+
+.row {
+    margin-top: 5vw;
+
     display: flex;
     justify-content: space-between;
+
     width: 100%;
-    color:#333;
-    padding:0 7vw;
-    line-height: 1;
+
+    padding: 0 7vw;
     padding-right: 12vw;
-    margin-right: 2vw;
+
+    color: #333;
+
+    line-height: 1;
 }
 
-.row h1{
+.row h1 {
     margin-left: 100px;
-    font-size:13vw;
+
+    font-size: 13vw;
     font-weight: 500;
 }
-.row .text{
-    margin-top:5vw;
+
+.row .text {
+    margin-top: 5vw;
 }
-.row h5{
+
+.row h5 {
     opacity: .6;
     font-size: 11px;
     font-weight: 500;
 }
-.row:nth-child(3){
-    margin-top:0;
+
+.row:nth-child(3) {
+    margin-top: 0;
 }
 
-#imagery{
+
+/* ================= IMAGERY ================= */
+
+#imagery {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     width: 100%;
+
     padding: 0 7vw;
     margin-top: 20vw;
 }
 
-#imagery #imglef{
+#imglef {
     width: 50%;
-    height: auto;
 }
 
-#imglef h1{
+#imglef h1 {
+    font-size: 2.4vw;
     font-weight: 600;
     letter-spacing: 1px;
-    font-size: 2.4vw;
     color: #333;
 }
 
-#imglef h1 span{
-    color:#14CF93;
-    font-family: Mazius Review 20.09;
-    font-weight: 100;
+#imglef h1 span {
+    color: #14CF93;
     font-style: italic;
 }
 
-#imgrig{
+#imgrig {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    height: 300px;
+
     width: 60%;
-    z-index: 9999;
+    height: 300px;
+
+    z-index: 10;
 }
 
-#imgrig .imgcntnr{
+#imgrig .imgcntnr {
     position: absolute;
+
     width: 27vw;
     height: 40vw;
+
     border-radius: 1vw;
-    filter:grayscale();
-    transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+
+    filter: grayscale(1);
+
+    background-size: cover;
+    background-position: center;
+
+    transition: all cubic-bezier(.19, 1, .22, 1) 1s;
 }
 
-#imgrig .imgcntnr:hover{
+#imgrig .imgcntnr:hover {
     filter: grayscale(0);
 }
 
-#imgrig .imgcntnr:nth-child(1){
-    transform:translate(-40%, -8%) rotate(-20deg);
-    background-image: url("https://images.unsplash.com/photo-1604866830893-c13cafa515d5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-size: cover;
-    background-position: center;
+#imgrig .imgcntnr:nth-child(1) {
+    transform: translate(-40%, -8%) rotate(-20deg);
+
+    background-image: url("https://images.unsplash.com/photo-1604866830893-c13cafa515d5?q=80&w=687&auto=format&fit=crop");
 }
 
-#imgrig .imgcntnr:nth-child(2){
-    transform:translate(-15%, 0%) rotate(-15deg);
-    background-image: url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-size: cover;
-    background-position: center;
+#imgrig .imgcntnr:nth-child(2) {
+    transform: translate(-15%, 0%) rotate(-15deg);
+
+    background-image: url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1172&auto=format&fit=crop");
 }
-#imgrig .imgcntnr:nth-child(3){
-    transform:translate(20%, 10%) rotate(-5deg);
-    background-image: url("https://plus.unsplash.com/premium_photo-1661780862403-2aad90259166?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-size: cover;
-    background-position: center;
+
+#imgrig .imgcntnr:nth-child(3) {
+    transform: translate(20%, 10%) rotate(-5deg);
+
+    background-image: url("https://plus.unsplash.com/premium_photo-1661780862403-2aad90259166?q=80&w=1172&auto=format&fit=crop");
 }
+
+
+/* ================= WORK ================= */
 
 #work {
     position: relative;
+
     width: 100%;
     min-height: 70vh;
-    background-color: #f2f2f2;
+
     padding-top: 150px;
-    transition: background-color 0.6s ease;   
+
+    background: #f2f2f2;
+
+    transition: background-color .6s ease;
 }
 
 #work::before {
     position: absolute;
+
     content: "";
+
+    top: -75px;
+    left: 0;
+
     width: 100%;
     height: 150px;
+
     background-image: url("https://2022.abhishekjha.me/rip.f6d7c4dd.svg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     transform: rotate(180deg);
-    top: -75px;
-    left: 0;
 }
 
-#work .project{
-    padding: 12vw 12vw;
+.project {
+    padding: 12vw;
+
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
+
     gap: 90px;
 }
 
-.project h1{
+.project h1 {
     display: flex;
     align-items: baseline;
-    font-size:8vw;
+
+    font-size: 8vw;
     font-weight: 600;
 }
 
-.project h1 .mini{
+.project h1 .mini {
+    margin-left: 5vw;
+
     font-size: 2vw;
     font-weight: 500;
-    margin-left: 5vw;
 }
 
 .o-ui-arrow {
     width: 5vw;
     height: 8vw;
+
     transform: rotate(90deg);
 }
 
@@ -274,170 +346,107 @@ html,body{
     stroke: #414141;
 }
 
-#images{
-    transition: background-color cubic-bezier(0.19, 1, 0.22, 1) 2s;
-    margin-top: 6vw;
+
+/* ================= PROJECT IMAGES ================= */
+
+#images {
     position: relative;
+
     width: 100%;
-    padding: 5vw 7vw;
     min-height: 500px;
+
+    padding: 5vw 7vw;
+    margin-top: 6vw;
+
     display: flex;
     align-items: baseline;
     justify-content: space-between;
 }
 
-.cnt{
+.cnt {
     display: block;
+
     overflow: hidden;
+
     border-radius: 50px;
+
     padding: 0 5vw;
+
     text-decoration: none;
 }
-.cnt img{
+
+.cnt img {
+    display: block;
+
     width: 105%;
-    aspect-ratio: 4/3;
+
     object-fit: cover;
 }
 
-.cnt1{
+.cnt1 {
     width: 65%;
 }
 
-.cnt2{
+.cnt2 {
     width: 25%;
 }
 
-.sd{
+.sd {
     width: 50vw;
     height: 50vw;
-    margin: 3vw auto 0;   
+
+    margin: 3vw auto 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;     
+
+    overflow: hidden;
 }
 
-.cnt3{
-    width: 40vw;           
-    height: 40vw;           
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;    
-    overflow: hidden;     
+.cnt3 {
+    width: 40vw;
+    height: 40vw;
+
+    padding: 0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
 }
 
-.cnt3 img{
+.cnt3 img {
     width: 100%;
     height: 100%;
-    object-fit: cover;    
+
+    object-fit: cover;
 }
 
-#cursor{
-    position: fixed;
-    width: 17vw;
-    top:0;
-    left: 0;
-    z-index:999999;
-    pointer-events: none;   
-}
 
-#cursor>div{
-    opacity: 0;  
-    position: absolute;
-    transition: all cubic-bezier(0.19, 1, 0.22, 1) .1s;
-    pointer-events: none;
-}
-
-#elem{
-    width: 100%;
-    position: relative;
-}
-
-#cursor .crow{
-    display: flex;
-    align-items: center;
-    gap:20px;
-    width:100%;
-    padding: .7vw;
-}
-
-.crow .ccircle{
-    width: 2vw;
-    height: 2vw;
-    border:2px solid #fff;
-    border-radius: 50%;
-}
-
-.crow .ccapsule{
-    padding: .7vw 3vw;
-    border-radius: 100px;
-    background-color: #fff;
-    color: black;
-}
-
-#elem img{
-    width: 100%;
-    opacity: 0;
-    animation: an 4s linear infinite;
-    position: absolute;
-}
-
-#elem img:nth-child(2){
-    animation-delay: 1s;
-}
-
-#elem img:nth-child(3){
-    animation-delay: 2s;
-}
-
-#elem img:nth-child(4){
-    animation-delay: 3s;
-}
-
-#elem img:nth-child(5){
-    animation-delay: 4s;
-}
-
-@keyframes an{
-    0%{
-        opacity: 1;
-    }
-    20%{
-        opacity: 1;
-    }
-    21%{
-        opacity: 0;
-    }
-    40%{
-        opacity: 1;
-    }
-    60%{
-        opacity: 0;
-    }
-    80%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 0;
-    }
-}
+/* ================= ACHIEVEMENTS ================= */
 
 .achievements {
     width: 100%;
     min-height: 90vh;
+
     padding: 8vw 7vw;
-    background-color: white;
+
+    background: white;
+
     display: flex;
     align-items: flex-start;
 }
 
 .achievement-heading {
+    position: relative;
+
     width: 25%;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
     margin-right: 2vw;
-    position: relative;
 }
 
 .achievement-heading h1 {
@@ -449,22 +458,28 @@ html,body{
 .achievement-heading .o-ui-arrow {
     width: 4vw;
     height: 4vw;
+
     margin-top: 2vw;
     margin-left: 3vw;
+
     transform: rotate(270deg);
 }
 
-.achievement-heading span { 
+.achievement-heading span {
     position: absolute;
-    left: 38vw;
+
+    left: 30vw;
     top: 8vw;
-    font-size: 14px;
+
+    font-size: 10px;
     font-weight: 400;
+
     white-space: nowrap;
 }
 
 .achievement-list {
     width: 65%;
+
     margin-top: 17vw;
     margin-left: 20vw;
 }
@@ -472,396 +487,761 @@ html,body{
 .achievement-item {
     display: flex;
     align-items: baseline;
+
     width: 100%;
+
     padding: 1.5vw 0;
+
     border-bottom: 1px solid #333;
 }
 
 .achievement-item span {
     width: 65%;
+
+    flex-shrink: 0;
+
     font-size: 10px;
     color: #777;
-    flex-shrink: 0;
 }
 
 .achievement-item h2 {
     width: 95%;
+
     font-size: 2.1vw;
     font-weight: 500;
     line-height: 1.2;
+
     color: #333;
 }
 
-.end{
-    position: relative;
+
+/* ================= SKILLS ================= */
+
+.skills-section {
     width: 100%;
-    height: 80vw;
-    min-height: 80vw;
-    background-color: #104d3a;
+    min-height: 30vh;
+
+    padding-bottom: 10vw;
+
+    background: #f2f2f2;
+    color: #111;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 6vw;
-    padding: 6vw 0 8vw;
-    color: white;
-    text-transform: uppercase;
-    overflow: visible;
-}
-.end h1{
-    font-size: 70px;
-    font-weight: 600;
+
     text-align: center;
 }
-.etext{
+
+.skills-section .workrow {
+    width: 100%;
+
+    padding: 4vw 12vw 2vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+
+    border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+.skills-section .workrow h1 {
+    font-size: 5vw;
+}
+
+.skills-section .o-ui-arrow path {
+    stroke: #111;
+}
+
+.skills-list {
+    width: 100%;
+
+    padding: 0 12vw;
+
+    margin-top: 2vw;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 4vw;
+}
+
+.skill-item {
+    font-size: 2vw;
+    font-weight: 500;
+
+    text-transform: uppercase;
+}
+
+
+/* ================= EXPERIENCE ================= */
+
+.experience-section {
+    width: 100%;
+    min-height: 60vh;
+
+    padding: 8vw 12vw;
+
+    background: white;
+    color: #111;
+}
+
+.experience-section .worknew {
+    padding-bottom: 3vw;
+
+    display: flex;
+    justify-content: flex-start;
+
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+.experience-section .worknew h1 {
+    font-size: 5vw;
+}
+
+.experience-content {
+    max-width: 75%;
+    margin-top: 4vw;
+}
+
+.experience-content h2 {
+    margin-bottom: 1.5vw;
+
+    font-size: 3.5vw;
+    font-weight: 600;
+}
+
+.experience-content h1 {
+    margin-bottom: 1.5vw;
+
+    font-size: 2.2vw;
+    font-weight: 600;
+}
+
+.experience-content p {
+    font-size: 1.5vw;
+    line-height: 1.8;
+
+    opacity: .85;
+}
+
+
+/* ================= EDUCATION ================= */
+
+#education {
+    width: 100%;
+    min-height: 90vh;
+
+    padding: 8vw 7vw;
+
+    background: #f2f2f2;
+
+    display: flex;
+    align-items: flex-start;
+}
+
+
+/* ================= CONTACT ================= */
+
+.end {
+    position: relative;
+
+    width: 100%;
+    min-height: 80vh;
+
+    padding: 6vw 5vw 8vw;
+
+    background: #104d3a;
+    color: white;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
+    gap: 6vw;
+
+    text-transform: uppercase;
+}
+
+.end h1 {
+    font-size: 70px;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+.etext {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     gap: 2vw;
 }
-.etext span{
-    align-items: flex-start;
-    justify-content: center;
+
+.end h1 .eline {
+    display: block;
 }
 
-.end .o-ui-arrow{ 
-    position: absolute;
-    width: 5vw; 
-    height: 5vw; 
-    left: 10vw;
-    bottom: 35vw;
-    top: 10vw;
-    transform: rotate(90deg); 
-    z-index: 999; 
+.end .o-ui-arrow {
+    width: 5vw;
+    height: 5vw;
+
+    transform: rotate(90deg);
 }
 
-.end .o-ui-arrow path{ 
-    stroke: white; 
+.end .o-ui-arrow path {
+    stroke: white;
 }
 
-.btn{
+.btn {
     display: flex;
     align-items: center;
     justify-content: center;
+
     gap: 2vw;
+
     flex-wrap: wrap;
 }
 
-.btn-item{
+.btn-item {
     position: relative;
-    overflow: hidden;
-    border: 1px solid white;
-    height: 5vw;
-    min-height: 50px;
+
     width: 45vw;
-    border-radius: 60px;
+    min-height: 50px;
+    height: 5vw;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border: 1px solid white;
+    border-radius: 60px;
 
     color: white;
     text-decoration: none;
     text-transform: uppercase;
+
     font-size: 1vw;
-
-    z-index: 1;
-    cursor: pointer;
-}
-
-.btn-item::before{
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    z-index: -1;
-}
-
-.btn-item:hover::before{
-   background-color: white;
-}
-
-.btn-item:hover{
-    background-color: white;
-    color: #104d3a;
-}
-
-.lst{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
 }
 
 .socials {
     width: 80%;
+
     margin: 0 auto;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 1vw;
 }
 
 .socials a {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5vw;
-
     flex: 1;
+
     padding: 1.5vw 0;
 
-    text-decoration: none;
-    color: white;
-
-    border-top: 1px solid rgba(255,255,255,0.5);
-    border-bottom: 1px solid rgba(255,255,255,0.5);
-
-    font-size: 1vw;
-    text-transform: uppercase;
-
-    overflow: hidden;
-    z-index: 1;
-    transition: color 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.socials a::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 0%;
-    background-color: #14CF93;
-    z-index: -1;
-    transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.socials a:hover::before{
-    height: 100%;
-}
-
-.socials a:hover{
-    color: #104d3a;
-}
-
-.socials a span:last-child {
-    font-size: 1.2vw;
-}
-
-html{
-    scroll-behavior: smooth;
-}
-
-#work{
-    scroll-margin-top: 0px;
-}
-
-#education{
-    width: 100%;
-    min-height: 90vh;
-    padding: 8vw 7vw;
-    background-color: #f2f2f2;
-    display: flex;
-    align-items: flex-start;
-}
-
-.skills-section{
-    width: 100%;
-    min-height: 30vh;
-    background-color: #f2f2f2;
-    color: black;
-    margin-bottom: 12vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-}
-
-.skills-section .workrow{
-    padding: 4vw 12vw 2vw;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    width: 100%;
-}
 
-.skills-section .workrow h1{
-    font-size: 5vw;
-}
+    gap: .5vw;
 
-.skills-section .o-ui-arrow path{
-    stroke: black;
-}
-
-.skills-list{
-    padding: 0 12vw;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4vw;
-    margin-top: 2vw;
-    width: 100%;
-}
-
-.skill-item{
-    font-size: 2vw;
-    font-weight: 500;
+    color: white;
+    text-decoration: none;
     text-transform: uppercase;
+
+    border-top: 1px solid rgba(255,255,255,.5);
+    border-bottom: 1px solid rgba(255,255,255,.5);
+
+    font-size: 1vw;
 }
 
-.experience-section{
+
+/* ================= CURSOR ================= */
+
+#cursor {
+    position: fixed;
+
+    width: 17vw;
+
+    top: 0;
+    left: 0;
+
+    z-index: 999999;
+
+    pointer-events: none;
+}
+
+#cursor > div {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: all cubic-bezier(.19,1,.22,1) .1s;
+}
+
+#elem {
     width: 100%;
-    min-height: 60vh;
-    background-color: #fff;
-    color: #111;
-    padding: 8vw 12vw;
-    margin-right: 8vw;
+    position: relative;
 }
 
-.experience-section .worknew{
-    padding: 0 0 3vw;
-    justify-content: flex-start;
-    gap: 40px;
-    border-bottom: 1px solid rgba(0,0,0,0.3);
+#elem img {
+    position: absolute;
+
+    width: 100%;
+
+    opacity: 0;
+
+    animation: an 4s linear infinite;
 }
 
-.experience-section .worknew h1{
-    font-size: 5vw;
+#elem img:nth-child(2) {
+    animation-delay: 1s;
 }
 
-.exp-arrow path{
-    stroke: #111;
+#elem img:nth-child(3) {
+    animation-delay: 2s;
 }
 
-.experience-content{
-    margin-top: 4vw;
-    max-width: 75%;
-}
+@keyframes an {
 
-.experience-content h2{
-    font-size: 3.5vw;
-    font-weight: 600;
-    margin-bottom: 1.5vw;
-}
-
-.experience-content h1{
-    font-size: 2.2vw;
-    font-weight: 600;
-    margin-bottom: 1.5vw;
-}
-
-.experience-content p{
-    font-size: 1.5vw;
-    line-height: 1.8;
-    opacity: 0.85;
-}
-
-.end h1 .eline{
-    display: block;
-}
-
-body,html{
-    overflow-x: hidden;
-}
-
-@media (max-width: 768px){
-    .row{
-        padding: 0 5vw;
-        margin-right: 0;
-        padding-right: 5vw;
+    0% {
+        opacity: 1;
     }
-    .row h1{
+
+    20% {
+        opacity: 1;
+    }
+
+    21% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* ================================================= */
+/* ================= MOBILE ======================== */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+    #home {
+        min-height: auto;
+        height: auto;
+    }
+
+
+    /* NAV */
+
+    #nav {
+        height: 70px;
+        padding: 0 5vw;
+
+        gap: 4vw;
+    }
+
+    #nav a {
+        font-size: 2.5vw;
+    }
+
+
+    /* HERO */
+
+    .row {
+        padding: 0 5vw;
+        margin-top: 12vw;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row h1 {
         margin-left: 0;
         font-size: 18vw;
     }
-    .achievement-heading{
+
+    .row .text {
+        margin-top: 5vw;
+    }
+
+
+    /* IMAGERY */
+
+    #imagery {
+        padding: 0 5vw;
+
+        margin-top: 25vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 15vw;
+    }
+
+    #imglef {
         width: 100%;
     }
-    .achievement-heading h1{
-        font-size: 14vw;
+
+    #imglef h1 {
+        font-size: 6vw;
+        line-height: 1.3;
     }
-    .achievement-heading span{
-        position: static;
-        display: block;
-        white-space: normal;
-        left: auto;
-        top: auto;
-        margin-top: 2vw;
-        font-size: 12px;
-    }
-    .achievement-list{
+
+    #imgrig {
         width: 100%;
-        margin-left: 0;
-        margin-top: 8vw;
+        height: 80vw;
     }
-    .achievement-item{
+
+    #imgrig .imgcntnr {
+        width: 45vw;
+        height: 65vw;
+    }
+
+
+    /* WORK */
+
+    #work {
+        padding-top: 80px;
+    }
+
+    .project {
+        padding: 20vw 5vw;
+
+        justify-content: space-between;
+
+        gap: 5vw;
+    }
+
+    .project h1 {
+        font-size: 13vw;
+    }
+
+    .project h1 .mini {
+        font-size: 4vw;
+    }
+
+    .project .o-ui-arrow {
+        width: 8vw;
+        height: 10vw;
+    }
+
+    #images {
+        padding: 5vw;
+
+        min-height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 10vw;
+    }
+
+    .cnt1,
+    .cnt2 {
+        width: 100%;
+    }
+
+    .cnt {
+        padding: 0;
+        border-radius: 20px;
+    }
+
+    .sd {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .cnt3 {
+        width: 80vw;
+        height: 80vw;
+    }
+
+
+    /* ================================================= */
+    /* ACHIEVEMENTS - IMPORTANT FIX                     */
+    /* ================================================= */
+
+    .achievements {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 20vw 5vw;
+
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
     }
-    .achievement-item span{
+
+    .achievement-heading {
         width: 100%;
-        margin-bottom: 1vw;
+
+        margin-right: 0;
     }
-    .achievement-item h2{
-        width: 100%;
-        font-size: 5vw;
+
+    .achievement-heading h1 {
+        font-size: 14vw;
+        line-height: .9;
     }
-    .end{
-        min-height: 100vh;
-        height: auto;
-        padding: 20vw 5vw 12vw;
-        gap: 10vw;
-    }
-    .end h1{
-        font-size: 9vw;
-    }
-    .end .o-ui-arrow{
-        position: static;
+
+    .achievement-heading .o-ui-arrow {
         width: 8vw;
         height: 8vw;
-        margin-bottom: 4vw;
+
+        margin-top: 7vw;
+        margin-left: 0;
     }
-    .btn{
-        flex-direction: column;
-        gap: 4vw;
+
+    .achievement-heading span {
+        position: static;
+
+        display: block;
+
+        margin-top: 5vw;
+
+        font-size: 3vw;
+
+        white-space: normal;
     }
-    .btn-item{
-        width: 85vw;
-        height: 14vw;
-        min-height: 55px;
-        font-size: 3.5vw;
-    }
-    .socials{
-        flex-direction: column;
-        gap: 4vw;
+
+
+    /* IMPORTANT:
+       Desktop margin-left removed on mobile
+    */
+
+    .achievement-list {
         width: 100%;
+
+        margin-top: 15vw;
+        margin-left: 0;
     }
-    .socials a{
-        flex: none;
+
+    .achievement-item {
         width: 100%;
-        font-size: 4.5vw;
-        padding: 5vw 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 4vw;
+
+        padding: 7vw 0;
     }
-    .socials a span:last-child{
-        font-size: 4.5vw;
+
+    .achievement-item span {
+        width: 100%;
+
+        font-size: 3vw;
     }
-    .experience-content h2{
-        font-size: 7vw;
+
+    .achievement-item h2 {
+        width: 100%;
+
+        font-size: 5vw;
+        line-height: 1.3;
     }
-    .experience-content h1{
+
+
+    /* ================================================= */
+    /* SKILLS */
+    /* ================================================= */
+
+    .skills-section {
+        min-height: auto;
+
+        padding-bottom: 20vw;
+    }
+
+    .skills-section .workrow {
+        padding: 15vw 5vw 8vw;
+
+        gap: 5vw;
+    }
+
+    .skills-section .workrow h1 {
+        font-size: 10vw;
+    }
+
+    .skills-section .o-ui-arrow {
+        width: 8vw;
+        height: 8vw;
+    }
+
+    .skills-list {
+        padding: 0 5vw;
+
+        margin-top: 10vw;
+
+        gap: 7vw;
+    }
+
+    .skill-item {
         font-size: 5vw;
     }
-    .experience-content p{
-        font-size: 4vw;
+
+
+    /* ================================================= */
+    /* EXPERIENCE */
+    /* ================================================= */
+
+    .experience-section {
+        min-height: auto;
+
+        padding: 20vw 5vw;
     }
+
+    .experience-section .worknew {
+        padding-bottom: 7vw;
+    }
+
+    .experience-section .worknew h1 {
+        font-size: 10vw;
+    }
+
+    .experience-content {
+        max-width: 100%;
+
+        margin-top: 10vw;
+    }
+
+    .experience-content h2 {
+        font-size: 7vw;
+        margin-bottom: 4vw;
+    }
+
+    .experience-content h1 {
+        font-size: 5vw;
+        margin-bottom: 4vw;
+    }
+
+    .experience-content p {
+        font-size: 4vw;
+        line-height: 1.6;
+    }
+
+
+    /* ================================================= */
+    /* EDUCATION - IMPORTANT FIX                        */
+    /* ================================================= */
+
+    #education {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 20vw 5vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #education .achievement-heading {
+        width: 100%;
+    }
+
+    #education .achievement-list {
+        width: 100%;
+
+        margin-left: 0;
+        margin-top: 15vw;
+    }
+
+
+    /* ================================================= */
+    /* CONTACT */
+    /* ================================================= */
+
+    .end {
+        min-height: 100vh;
+
+        padding: 20vw 5vw 12vw;
+
+        gap: 10vw;
+    }
+
+    .end h1 {
+        font-size: 9vw;
+    }
+
+    .end .o-ui-arrow {
+        position: static;
+
+        width: 8vw;
+        height: 8vw;
+
+        margin-bottom: 4vw;
+    }
+
+    .btn {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 4vw;
+    }
+
+    .btn-item {
+        width: 85vw;
+        height: 14vw;
+
+        min-height: 55px;
+
+        font-size: 3.5vw;
+    }
+
+    .socials {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 4vw;
+    }
+
+    .socials a {
+        width: 100%;
+
+        flex: none;
+
+        padding: 5vw 0;
+
+        font-size: 4.5vw;
+    }
+
+    .socials a span:last-child {
+        font-size: 4.5vw;
+    }
+
+
+    /* Cursor mobile par hide */
+
+    #cursor {
+        display: none;
+    }
+
 }

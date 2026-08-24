@@ -1,241 +1,490 @@
 gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.config({ignoreMobileResize:true});
-function valueSetters(){
-     gsap.set("#nav a",{
-        y:"-100%",
-        opacity:0
-    })
-    gsap.set("#home span .child",{
-        y:"100%"
-    })
-    gsap.set("#home .row img",{
-        opacity:0
-    })
+
+ScrollTrigger.config({
+    ignoreMobileResize: true
+});
+
+
+/* ================================================= */
+/* INITIAL SETTERS */
+/* ================================================= */
+
+function valueSetters() {
+
+    gsap.set("#nav a", {
+        y: "-100%",
+        opacity: 0
+    });
+
+    gsap.set("#home span .child", {
+        y: "100%"
+    });
+
+    gsap.set("#home .row img", {
+        opacity: 0
+    });
 }
 
 
-function revealToSpan(){
-document.querySelectorAll(".reveal")
-.forEach(function(elem){
+/* ================================================= */
+/* REVEAL TEXT */
+/* ================================================= */
 
+function revealToSpan() {
 
-    var parent=document.createElement("span")
-    var child=document.createElement("span")
+    document
+        .querySelectorAll(".reveal")
+        .forEach(function (elem) {
 
+            const parent = document.createElement("span");
+            const child = document.createElement("span");
 
-    parent.classList.add("parent")
-    child.classList.add("child")
+            parent.classList.add("parent");
+            child.classList.add("child");
 
+            child.innerHTML = elem.innerHTML;
 
-    child.innerHTML=elem.innerHTML;
-    parent.appendChild(child)
+            parent.appendChild(child);
 
-    elem.innerHTML="";
-    elem.appendChild(parent)
-})
+            elem.innerHTML = "";
+            elem.appendChild(parent);
+
+        });
 }
+
+
 revealToSpan();
 valueSetters();
 
-var tl=gsap.timeline();
-tl.from(" #loader .child span",{
-    x:100,
-    duration:1.4,
-    stagger:0.2,
-    ease:Power3.easeInOut
-})
 
-.to("#loader .parent .child",{
-    y:"-100%",
-    duration:1,
-    ease:Circ.easeInOut
-})
+/* ================================================= */
+/* LOADER ANIMATION */
+/* ================================================= */
 
-.to("#loader",{
-    height:0,
-    duration:1,
-    ease:Circ.easeInOut
-})
+const loaderTimeline = gsap.timeline();
 
-.to("#green",{
-    height:"100%",
-    top:0,
-    duration:1,
-    delay:-0.5,
-    ease:Circ.easeInOut
-})
+loaderTimeline
 
-.to("#green",{
-    height:"0%",
-    duration:1,
-    delay:-0.5,
-    ease:Circ.easeInOut,
-    onComplete:function(){
-        animateHomePage()
-    }
-})
-
-function animateHomePage(){
-   
-    var tl=gsap.timeline();
-    tl.to("#nav a",{
-        y:0,
-        opacity:1,
-        stagger:0.2,
-        ease:Expo.easeInOut
+    .from("#loader .child span", {
+        x: 100,
+        duration: 1.4,
+        stagger: 0.2,
+        ease: "power3.inOut"
     })
 
-     tl.to("#home .parent .child",{
-        y:0,
-        stagger:0.1,
-        duration:0.4,
-        ease:Expo.easeInOut
+    .to("#loader .parent .child", {
+        y: "-100%",
+        duration: 1,
+        ease: "circ.inOut"
     })
+
+    .to("#loader", {
+        height: 0,
+        duration: 1,
+        ease: "circ.inOut"
+    })
+
+    .to("#green", {
+        height: "100%",
+        top: 0,
+        duration: 1,
+        delay: -0.5,
+        ease: "circ.inOut"
+    })
+
+    .to("#green", {
+        height: "0%",
+        duration: 1,
+        delay: -0.5,
+        ease: "circ.inOut",
+
+        onComplete: function () {
+            animateHomePage();
+        }
+    });
+
+
+/* ================================================= */
+/* HOME ANIMATION */
+/* ================================================= */
+
+function animateHomePage() {
+
+    const tl = gsap.timeline();
+
+    tl.to("#nav a", {
+        y: 0,
+        opacity: 1,
+
+        stagger: 0.2,
+
+        ease: "expo.inOut"
+    })
+
+    .to("#home .parent .child", {
+        y: 0,
+
+        stagger: 0.1,
+
+        duration: 0.4,
+
+        ease: "expo.inOut"
+    });
+
 }
 
 
+/* ================================================= */
+/* CARD HOVER */
+/* ================================================= */
 
 function cardHoverEffect() {
 
-    const cursorContent = document.querySelector(".cursor-content");
-    const elemImages = document.querySelectorAll("#elem img");
-    const workSection = document.querySelector("#work");   
+    // Mobile par cursor animation nahi chahiye
+    if (window.innerWidth <= 768) {
+        return;
+    }
 
-    document.querySelectorAll(".cnt").forEach(function(cnt) {
+    const cursorContent =
+        document.querySelector(".cursor-content");
 
-        var showingImage = cnt.querySelector("img");
-        var imageList = cnt.dataset.images.split(",");
-        var bgColor = showingImage.dataset.color;
+    const elemImages =
+        document.querySelectorAll("#elem img");
 
-        cnt.addEventListener("mousemove", function(dets) {
-            cursorContent.style.opacity = 1;
-            cursorContent.style.transform = `translate(${dets.clientX}px, ${dets.clientY}px)`;
+    const workSection =
+        document.querySelector("#work");
 
-            showingImage.style.filter = "grayscale(1)";
 
-            elemImages.forEach(function(img, i) {
-                img.src = imageList[i];
+    document
+        .querySelectorAll(".cnt")
+        .forEach(function (cnt) {
+
+            const showingImage =
+                cnt.querySelector("img");
+
+            const imageList =
+                cnt.dataset.images
+                    .split(",")
+                    .map(url => url.trim());
+
+            const bgColor =
+                showingImage.dataset.color;
+
+
+            cnt.addEventListener("mousemove", function (dets) {
+
+                cursorContent.style.opacity = 1;
+
+                cursorContent.style.transform =
+                    `translate(${dets.clientX}px, ${dets.clientY}px)`;
+
+
+                showingImage.style.filter =
+                    "grayscale(1)";
+
+
+                elemImages.forEach(function (img, i) {
+
+                    if (imageList[i]) {
+                        img.src = imageList[i];
+                    }
+
+                });
+
+
+                if (bgColor) {
+
+                    workSection.style.backgroundColor =
+                        "#" + bgColor;
+
+                }
+
             });
 
-            if (bgColor) {
-                workSection.style.backgroundColor = "#" + bgColor;   
-            }
-        });
 
-        cnt.addEventListener("mouseleave", function() {
-            cursorContent.style.opacity = 0;
-            showingImage.style.filter = "grayscale(0)";
-            workSection.style.backgroundColor = "";   
+            cnt.addEventListener("mouseleave", function () {
+
+                cursorContent.style.opacity = 0;
+
+                showingImage.style.filter =
+                    "grayscale(0)";
+
+                workSection.style.backgroundColor = "";
+
+            });
+
         });
-    });
 
 }
+
 
 cardHoverEffect();
 
-function pro(){
- const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#work",
-        start: "top 80%",
-        end: "top 50%",
-      },
-    });
 
-    tl.from(".project h1", {
-        y:100,
-      stagger: 0.15,
-      duration: 1,
-      delay:1
-    });
-}
-pro();
+/* ================================================= */
+/* PROJECT ANIMATION */
+/* ================================================= */
 
-function edu() {
-    const tl1 = gsap.timeline({
-        scrollTrigger: {
-    trigger: "#education",
-    start: "top 90%",
-    end: "top 40%"
-}
-    });
+function projectAnimation() {
 
-    tl1.from("#education .education-item h2", {   
-        y: 150,
-        stagger: 0.8,
-        duration: 0.5,
-        opacity: 0,
-        ease: "power3.out"
-    });
-    
-}
-edu();
+    gsap.from(".project h1", {
 
-
-function achi() {
-    const tl1 = gsap.timeline({
-        scrollTrigger: {
-            trigger: ".achievements",   
-            start: "top 90%",
-            end: "top 40%",
-        }
-    });
-
-    tl1.from(".achievements .achievement-item h2", {
-        y: 150,
-        stagger: 0.8,
-        duration: 0.5,
-        opacity: 0,
-        ease: "power3.out"
-    });
-}
-achi();
-
-function image(){
-    gsap.from('#images .cnt', {
         y: 100,
-        opacity: 0,
-        stagger: 0.3,
-        duration: 1,
-        scale:0.3,
-        scrollTrigger: {
-            trigger: '#images',
-            start: 'top 85%',
-            end: 'top 30%',
-            scrub: 1
-        }
-    });
 
-    gsap.from('.sd .cnt', {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        scale:0.3,
-        scrollTrigger: {
-            trigger: '.sd',
-            start: 'top 85%',
-            end: 'top 30%',
-            scrub: 1
-        }
-    });
-}
-image();
+        stagger: 0.15,
 
-function end () {
-    const tln = gsap.timeline({
+        duration: 1,
+
+        delay: 0.2,
+
+        ease: "power3.out",
+
         scrollTrigger: {
-            trigger: ".etext",
+
+            trigger: "#work",
+
             start: "top 80%",
-            end: "top 20%"
+
+            toggleActions:
+                "play none none reverse"
+
         }
+
     });
 
-    tln.from(".end h1 .eline", {
-        x: 100,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.5,
-        ease: "power3.out"
-    });
 }
-end();
+
+
+projectAnimation();
+
+
+function achievementAnimation() {
+
+    const items = document.querySelectorAll(
+        ".achievements .achievement-item h2"
+    );
+
+    if (!items.length) {
+        console.log("Achievement elements not found");
+        return;
+    }
+
+    items.forEach((item) => {
+
+        gsap.fromTo(
+            item,
+
+            {
+                y: 100,
+                opacity: 0
+            },
+
+            {
+                y: 0,
+                opacity: 1,
+
+                duration: 0.8,
+
+                ease: "power3.out",
+
+                scrollTrigger: {
+                    trigger: item,
+
+                    start: "top 90%",
+
+                    end: "top 60%",
+
+                    toggleActions:
+                        "play none none reverse",
+
+                    markers: false
+                }
+            }
+        );
+
+    });
+
+}
+
+
+function educationAnimation() {
+
+    const items = document.querySelectorAll(
+        "#education .education-item h2"
+    );
+
+    if (!items.length) {
+        console.log("Education elements not found");
+        return;
+    }
+
+    items.forEach((item) => {
+
+        gsap.fromTo(
+            item,
+
+            {
+                y: 100,
+                opacity: 0
+            },
+
+            {
+                y: 0,
+                opacity: 1,
+
+                duration: 0.8,
+
+                ease: "power3.out",
+
+                scrollTrigger: {
+                    trigger: item,
+
+                    start: "top 90%",
+
+                    end: "top 60%",
+
+                    toggleActions:
+                        "play none none reverse",
+
+                    markers: false
+                }
+            }
+        );
+
+    });
+
+}
+
+
+achievementAnimation();
+educationAnimation();
+
+
+/* ================================================= */
+/* PROJECT IMAGES */
+/* ================================================= */
+
+function imageAnimation() {
+
+    gsap.from("#images .cnt", {
+
+        y: 100,
+
+        opacity: 0,
+
+        stagger: 0.3,
+
+        duration: 1,
+
+        scale: 0.3,
+
+        scrollTrigger: {
+
+            trigger: "#images",
+
+            start: "top 85%",
+
+            end: "top 30%",
+
+            scrub: 1
+
+        }
+
+    });
+
+
+    gsap.from(".sd .cnt", {
+
+        y: 100,
+
+        opacity: 0,
+
+        duration: 1,
+
+        scale: 0.3,
+
+        scrollTrigger: {
+
+            trigger: ".sd",
+
+            start: "top 85%",
+
+            end: "top 30%",
+
+            scrub: 1
+
+        }
+
+    });
+
+}
+
+
+imageAnimation();
+
+
+/* ================================================= */
+/* CONTACT ANIMATION */
+/* ================================================= */
+
+function endAnimation() {
+
+    gsap.from(".end h1 .eline", {
+
+        x: 100,
+
+        opacity: 0,
+
+        stagger: 0.2,
+
+        duration: 0.5,
+
+        ease: "power3.out",
+
+        scrollTrigger: {
+
+            trigger: ".etext",
+
+            start: "top 80%",
+
+            toggleActions:
+                "play none none reverse"
+
+        }
+
+    });
+
+}
+
+
+endAnimation();
+
+
+/* ================================================= */
+/* IMPORTANT - REFRESH */
+/* ================================================= */
+
+window.addEventListener("load", function () {
+
+    ScrollTrigger.refresh();
+
+});
+
+
+/* ================================================= */
+/* RESIZE REFRESH */
+/* ================================================= */
+
+let resizeTimer;
+
+window.addEventListener("resize", function () {
+
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(function () {
+
+        ScrollTrigger.refresh();
+
+    }, 300);
+
+});

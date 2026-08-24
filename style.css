@@ -129,6 +129,7 @@ html,body{
     padding:0 7vw;
     line-height: 1;
     padding-right: 12vw;
+    margin-right: 2vw;
 }
 
 .row h1{
@@ -294,6 +295,8 @@ html,body{
 }
 .cnt img{
     width: 105%;
+    /* aspect-ratio: 4/3; */
+    object-fit: cover;
 }
 
 .cnt1{

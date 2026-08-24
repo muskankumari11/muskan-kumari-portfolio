@@ -1,5 +1,5 @@
-
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ignoreMobileResize:true});
 function valueSetters(){
      gsap.set("#nav a",{
         y:"-100%",
@@ -81,14 +81,14 @@ function animateHomePage(){
     tl.to("#nav a",{
         y:0,
         opacity:1,
-        stagger:0.5,
+        stagger:0.2,
         ease:Expo.easeInOut
     })
 
      tl.to("#home .parent .child",{
         y:0,
         stagger:0.1,
-        duration:1,
+        duration:0.4,
         ease:Expo.easeInOut
     })
 }
@@ -154,10 +154,10 @@ pro();
 function edu() {
     const tl1 = gsap.timeline({
         scrollTrigger: {
-            trigger: "#education",
-            start: "top 50%",
-            end: "top 40%"
-        }
+    trigger: "#education",
+    start: "top 90%",
+    end: "top 40%"
+}
     });
 
     tl1.from("#education .education-item h2", {   
@@ -167,6 +167,7 @@ function edu() {
         opacity: 0,
         ease: "power3.out"
     });
+    
 }
 edu();
 
@@ -175,8 +176,8 @@ function achi() {
     const tl1 = gsap.timeline({
         scrollTrigger: {
             trigger: ".achievements",   
-            start: "top 50%",
-            end: "top 30%",
+            start: "top 90%",
+            end: "top 40%",
         }
     });
 
@@ -224,7 +225,7 @@ function end () {
     const tln = gsap.timeline({
         scrollTrigger: {
             trigger: ".etext",
-            start: "top 50%",
+            start: "top 80%",
             end: "top 20%"
         }
     });
@@ -232,7 +233,7 @@ function end () {
     tln.from(".end h1 .eline", {
         x: 100,
         opacity: 0,
-        stagger: 0.3,
+        stagger: 0.2,
         duration: 0.5,
         ease: "power3.out"
     });

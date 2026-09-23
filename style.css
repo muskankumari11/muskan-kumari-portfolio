@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -63,6 +62,8 @@ html.has-scroll-smooth body {
     font-size: 4.5vw;
     font-weight: 500;
 }
+
+
 
 #loader h1 span {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -386,6 +387,10 @@ html.has-scroll-smooth body {
     background-color: #f2f2f2;
     padding-bottom: 1px;
     transition: background-color 0.6s cubic-bezier(.19, 1, .22, 1);
+}
+
+.feat-break {
+    display: none;
 }
 
 #work::before {
@@ -1323,54 +1328,6 @@ html.has-scroll-smooth body {
     height: 18px;
 }
 
-/* SITE OF THE DAY */
-
-.site-day {
-    position: fixed;
-    left: 0;
-    right: auto;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 53px;
-    height: 175px;
-    background: #fff;
-    color: #111;
-    z-index: 100000;
-    display: block;
-    text-decoration: none;
-    overflow: hidden;
-}
-
-.site-day-logo {
-    position: absolute;
-    top: 14px;
-    left: 15px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 900;
-    -webkit-text-stroke: .5px;
-    line-height: 1;
-    color: #111;
-}
-
-.dot {
-    font-size: 11px;
-    margin-top: 3vw;
-}
-
-.site-day-text {
-    position: absolute;
-    left: 50%;
-    top: 108px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1;
-    color: #111;
-    white-space: nowrap;
-    transform: translate(-50%, -50%) rotate(-90deg);
-}
-
 /* NAV SOCIALS */
 
 .nav-socials {
@@ -1725,49 +1682,128 @@ body.loader-active {
     left: 0;
 }
 
+.mobile-featured-arrow {
+    display: none;
+}
+
+.about-me-label {
+    display: none;
+}
+
+.end .etext h1 .last-word,
+.end .etext h1 .connect-word {
+    display: none;
+}
+
+
+
 /* =========================================================================
    📱 MOBILE & OTHER DEVICES RESPONSIVE MEDIA QUERIES (ABHISHEK JHA STYLE)
+   NOTE: This is the ONE AND ONLY mobile media query block.
+   Everything inside here applies ONLY at 768px and below.
+   Desktop/laptop uses the rules above, untouched.
 ========================================================================= */
 
 @media (max-width: 768px) {
 
-    /* NAVBAR ON MOBILE */
+    /* =========================
+       BODY / HOME
+    ========================= */
+
+    body {
+        background-color: black;
+    }
+
+    #home {
+        background-color: black;
+        min-height: auto;
+        height: auto;
+        padding-top: 85px;
+        padding-bottom: 15vw;
+    }
+
+
+    /* =========================
+       LOADER
+    ========================= */
+
+    #loader h1 {
+        font-size: 7vw;
+        flex-direction: column;
+        align-items: center;
+        gap: 2vw;
+        text-align: center;
+        z-index: 9000;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    #nav a:nth-child(2),
+    #nav .nav-socials {
+        display: none;
+    }
+
     #nav {
         height: auto;
         padding: 16px 20px;
     }
 
     #nav a {
-        font-size: 10px;
+        font-size: 11px;
         margin: 0 !important;
+        color: #fff;
+        padding: 18px 16px;
     }
 
-    .nav-socials > a {
-        top: 0;
-        margin-left: 0;
+    #nav a .line1,
+    #nav a:hover .line1 {
+        display: none;
     }
 
-    .nav-socials::before {
-        transform: translateX(-50%);
-        width: 140px;
+    #nav a .line2,
+    #nav a:hover .line2 {
+        background: #fff;
+        bottom: 17px;
+        width: 75%;
+        transition: none;
+        margin-right: 3vw;
     }
 
-    .socials-dropdown {
-        transform: translateX(-50%);
-        width: 140px;
-        padding: 0 16px;
+    #nav a:nth-child(4) .line2,
+    #nav a:nth-child(4):hover .line2 {
+        width: 61%;
     }
 
-    .socials-dropdown-list {
-        margin-left: 0;
+
+    /* =========================
+       HERO
+    ========================= */
+
+    #home #new {
+        font-size: 18.5vw;
+        color: #fff;
+        margin-left: 2vw;
     }
 
-    /* HOME / HERO */
-    #home {
-        min-height: auto;
-        height: auto;
-        padding-top: 85px;
-        padding-bottom: 15vw;
+    #new {
+        color: #fff;
+    }
+
+    .c-down-btn {
+        display: none;
+    }
+
+    .c-dash {
+        display: inline-block;
+        width: 16vw;
+        height: 6px;
+        background: #14CF93;
+        margin-right: 3vw;
+        align-self: center;
+        margin-top: 8vw;
     }
 
     .row {
@@ -1800,153 +1836,298 @@ body.loader-active {
 
     .c-visual {
         top: 0;
-        transform: none;
+        transform: translateY(-1vw);
     }
 
     .c-visual svg {
-        width: 75vw;
-        margin: 2vw 0;
+        width: 37vw;
+        margin-top: -25vw;
+        margin-left: 53vw;
     }
 
-    .c-down-btn {
-        top: 0;
-        margin-right: 0;
-        width: 32px;
-        height: 32px;
+    #home .text #one,
+    #home .text #two {
+        color: #fff;
     }
 
-    /* IMAGERY SECTION */
+    #home > .row:first-of-type {
+        position: relative;
+    }
+
+    #home > .row:first-of-type > .text {
+        position: absolute;
+        top: 78vw;
+        width: 45%;
+        margin: 0 !important;
+        padding: 0;
+        transform: none !important;
+        z-index: 20;
+        box-sizing: border-box;
+    }
+
+    #home > .row:first-of-type > .text:first-of-type {
+        left: 5vw;
+    }
+
+    #home > .row:first-of-type > .text:nth-of-type(2) {
+        left: 50%;
+    }
+
+    #home > .row:first-of-type > .text h5 {
+        margin: 0 !important;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 11px;
+        font-weight: 550;
+        line-height: 1.25;
+        opacity: .6;
+        color: #fff;
+        white-space: nowrap;
+    }
+
+    #home > .row:first-of-type > .text .parent {
+        justify-content: flex-start !important;
+    }
+
+    #home > .row:first-of-type > .text .for-font {
+        font-family: 'MaziusDisplay', sans-serif !important;
+        font-weight: normal !important;
+    }
+
+
+    /* =========================
+       IMAGERY (images before about text)
+    ========================= */
+
     #imagery {
-        padding: 0 5vw;
-        margin-top: 15vw;
-        margin-bottom: 5vw;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 12vw;
+        padding: 0 5vw;
+        margin-top: 15vw;
+        margin-bottom: 5vw;
+    }
+
+    #imgrig {
+        order: 1;
+        width: 100%;
+        height: 100vw;
+        margin-top: 19vw;
+    }
+
+    #imgrig .imgcntnr {
+        width: 53vw;
+        height: 96vw;
+        border-radius: 20px;
+        margin-bottom: 0;
     }
 
     #imglef {
+        order: 2;
         width: 100%;
+        padding-top: 15vw;
     }
 
     #imglef h1 {
         font-size: 6vw;
         line-height: 1.15;
-        margin-top: 0;
+        margin-top: 7vw;
+        color: #fff;
+        margin-left: 2.1vw;
     }
 
-    #imgrig {
-        width: 100%;
-        height: 80vw;
-        margin-top: 0;
+    .about-me-label {
+        display: block;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 2.5vw;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #a2a2a2;
+        margin-bottom: 2vw;
+        margin-left: 2.1vw;
+        margin-top: 15vw;
     }
 
-    #imgrig .imgcntnr {
-        width: 50vw;
-        height: 72vw;
-        border-radius: 20px;
-    }
 
-    /* WORK SECTION */
+    /* =========================
+       WORK
+    ========================= */
+
     #work {
         padding-top: 40px;
+        background-color: #1a1a1a;
+    }
+
+    #work::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 5vw !important;
+        width: 90% !important;
+        height: 1px !important;
+        background: #000 !important;
+        background-image: none !important;
+        transform: none !important;
+        z-index: 10 !important;
+    }
+
+    .feat-break {
+        display: block;
+    }
+
+    #ac::before {
+        content: "" !important;
+        background: #1a1a1a !important;
+        background-image: none !important;
+        transform: none !important;
     }
 
     .help-heading {
         margin-left: 5vw;
         margin-top: 30px;
-    }
-
-    .help-heading h1 {
-        margin-left: 0;
-        margin-top: 15px;
-        font-size: 11px;
+        width: 30vw;
+        height: 40vw;
     }
 
     .help-heading .o-ui-arrow.help-arrow {
-        margin-left: 0;
-        margin-top: 20px;
-        width: 30px;
-        height: 30px;
+        margin-left: -7vw;
+        margin-top: 10px;
+        width: 70px;
+        height: 95px;
     }
 
-    .black-line {
-        width: 90%;
-        margin-left: 5vw;
-        margin-top: 6vw;
+    .help-heading .o-ui-arrow.help-arrow path {
+        stroke: #fff;
+    }
+
+    .help-heading h1 {
+        margin-left: 20vw;
+        margin-top: -10px;
+        font-size: 12px;
+        white-space: nowrap;
     }
 
     .cap-list {
-        margin-left: 5vw;
+        margin-left: 20vw;
     }
 
     .cap-list h2 {
-        font-size: 15px;
+        font-size: 19px;
+        margin-left: 5vw;
+        margin-top: -14vw;
+        color: #fff;
+    }
+
+    .black-line {
+        width: 85%;
+        margin-left: 8vw;
+        margin-top: 12vw;
+    }
+
+
+    /* =========================
+       FEATURED WORK
+    ========================= */
+
+    .works-shift {
+        display: inline-block;
+        margin-left: 35vw;
     }
 
     .project {
-        padding: 16vw 5vw 10vw;
-        justify-content: space-between;
-        gap: 4vw;
+        padding: 22vw 5vw 10vw;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 2vw;
     }
 
     .project h1 {
-        font-size: 11.5vw;
+        display: block;
+        width: 100%;
+        font-size: 15vw;
+        line-height: 1;
         margin: 0;
+        margin-top: -3vw;
+        color: #fff;
+        margin-left: 3vw;
+    }
+
+    .fw-mask {
+        overflow: visible;
+        width: auto;
+    }
+
+    .fw-text {
+        width: auto;
     }
 
     .project h1 .mini {
-        font-size: 3.5vw;
-        margin-left: 2vw;
+        display: none;
     }
 
     .project .o-ui-arrow {
+        display: block;
         position: static;
-        width: 30px;
-        height: 30px;
-        margin-top: 0;
+        width: 60px;
+        height: 70px;
+        margin-top: 6vw;
+        transform: rotate(45deg);
+        align-self: flex-start;
+        margin-left: 7vw;
     }
 
-    /* FEAT WORKS PROJECT CARDS (PORTRAIT STACK LIKE ABHISHEK JHA) */
+    .project .o-ui-arrow path {
+        stroke: #f8f4f4;
+    }
+
+
+    /* =========================
+       PROJECT CARDS
+    ========================= */
+
     #images,
     #images2 {
         padding: 0 5vw;
         min-height: auto;
         display: flex;
         flex-direction: column;
-        gap: 8vw;
+        justify-content: flex-start;
+        align-items: center;
         margin-top: 0;
-        margin-bottom: 8vw;
+        margin-bottom: 0;
     }
 
     .cnt1,
     .cnt2,
+    .cnt3,
     .cnt4,
     .cnt5 {
-        width: 100%;
-        height: 115vw;
-        margin: 0;
+        width: 94%;
+        height: 80vw;
+        margin: 0 auto 8vw auto;
         border-radius: 28px !important;
     }
 
-    .sd {
+    .cnt4 {
+        transform: none;
+    }
+
+       .sd {
         width: 100%;
-        height: 115vw;
+        height: auto;
         padding: 0 5vw;
-        margin: 0 0 8vw 0;
-    }
-
-    .cnt3 {
-        width: 100%;
-        height: 100%;
-        border-radius: 28px !important;
+        margin: 0;
     }
 
     .cnt .img-wrapper {
         border-radius: 28px !important;
     }
 
+
+    
     .cnt img {
         border-radius: 28px;
     }
@@ -1989,7 +2170,11 @@ body.loader-active {
         transform: translateY(0);
     }
 
-    /* ARCHIVE */
+
+    /* =========================
+       ARCHIVE
+    ========================= */
+
     .archive-section {
         min-height: auto;
         padding: 14vw 5vw 8vw;
@@ -2001,19 +2186,31 @@ body.loader-active {
     }
 
     .archive-heading span {
-        font-size: 12px;
+        font-size: 14px;
+        margin-left: 22vw;
+        margin-top: -10vw;
     }
 
     .archive-list {
-        gap: 3vw;
-        margin-top: 3vw;
+        margin-top: 4vw;
     }
 
     .archive-list a {
-        font-size: 4.2vw;
+        font-size: 3.5vw;
+        margin-left: 22vw;
+        margin-top: 1vw;
+        color: #fff;
     }
 
-    /* PLAYBOOK / CHAT BUTTON */
+    .archive-list a:hover::after {
+        transform: translate(15px, -50%);
+    }
+
+
+    /* =========================
+       CHAT BUTTON
+    ========================= */
+
     .chat-btn {
         width: calc(100% - 10vw);
         height: 13vw;
@@ -2021,16 +2218,40 @@ body.loader-active {
         margin: 6vw 5vw 12vw;
         font-size: 4vw;
         border-radius: 40px;
+        color: #fff;
+        margin-top: 18vw;
     }
 
-    /* ACHIEVEMENTS / HONORS */
+
+    /* =====================================================
+       HONORS / ACHIEVEMENTS
+    ===================================================== */
+
     .achievements {
-        width: 100%;
+        background-color: black;
         min-height: auto;
+        width: 100%;
         padding: 15vw 5vw;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    #ac {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #ac .achievement-heading {
+        display: contents;
+    }
+
+    #ac .achievement-list {
+        order: 1;
+    }
+
+    #ac .achievement-heading .featured-box {
+        order: 2;
     }
 
     .achievement-heading {
@@ -2041,6 +2262,8 @@ body.loader-active {
     .achievement-heading h1 {
         font-size: 13vw;
         margin-left: 0;
+        margin-top: 20vw;
+        color: #fff;
     }
 
     .achievement-heading h1 .hl {
@@ -2057,42 +2280,15 @@ body.loader-active {
 
     .achievement-heading h2 {
         position: static;
-        margin: 4vw 0 0 0;
         font-size: 11px;
         white-space: normal;
-    }
-
-    .featured-box {
-        width: 100%;
-        margin-top: 6vw;
-    }
-
-    .featured-label {
-        font-size: 10px;
-        margin-top: 4vw;
-    }
-
-    .featured-title {
-        font-size: 5vw;
-        margin-top: 2vw;
-    }
-
-    .featured-img {
-        width: 100%;
-        height: 48vw;
-        border-radius: 16px;
-        margin-top: 3vw;
-    }
-
-    .featured-desc {
-        font-size: 3.2vw;
-        margin-top: 2vw;
-        line-height: 1.5;
+        margin-left: 26vw;
+        margin-top: -2vw;
     }
 
     .achievement-list {
         width: 100%;
-        margin-top: 6vw;
+        margin-top: 14vw;
         margin-left: 0;
     }
 
@@ -2111,6 +2307,7 @@ body.loader-active {
         width: auto;
         font-size: 4.2vw;
         margin-left: 0;
+        color: #fff;
     }
 
     .achievement-item span {
@@ -2119,20 +2316,140 @@ body.loader-active {
     }
 
     .achievement-arrow {
-        width: 36px;
-        height: 36px;
-        min-width: 36px;
-        min-height: 36px;
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        background-color: white;
     }
 
-    /* EXPERIENCE */
+    .achievement-arrow svg path {
+        stroke: #1a1a1a;
+    }
+
+
+    /* FEATURED BOX — MOBILE ONLY */
+
+        /* =========================================================
+       PROJECT HOVER TAGS (YEAR & ROLE ANIMATION)
+    ========================================================= */
+
+    .cnt-hover-info,
+    .cnt-hover-inform,
+    .cnt-hover-second,
+    .cnt-hover-fourth,
+    .cnt-hover-five {
+        position: absolute !important;
+        left: 5vw !important;
+        
+        /* 🟢 Hindi Comment: Image par dono text ko HALKA NEECHE laane ke liye top: 7.5vw kiya hai */
+        top: 49vw !important; 
+        
+        /* bottom: auto !important; */
+        gap: 1.8vw !important;
+        z-index: 6 !important;
+        pointer-events: none !important;
+    }
+
+    /* 🟢 Hindi Comment: Mask container jo text ko bahar nahi dikhne dega */
+    .hover-mask {
+        display: block !important;
+        overflow: hidden !important; /* 👈 Shuruat me text ko chhupa ke rakhega */
+    }
+
+    /* 🟢 Hindi Comment: Shuru me (Jab tak hover na ho) text bilkul gayab (hidden) rahega */
+    .hover-tag {
+        display: block !important;
+        font-size: 2.8vw !important;
+        padding: 1.6vw 3.8vw !important;
+        
+        opacity: 0 !important;                   /* 👈 Bina hover ke bilkul nahi dikhega */
+        transform: translateY(-130%) !important; /* 👈 Mask ke upar chhipa rahega */
+        
+        transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s ease !important;
+    }
+
+    /* 🟢 Hindi Comment: Doosre tag (ROLE) ke liye halka delay taaki dono ek ke baad ek aaye */
+    .cnt .hover-mask:nth-child(2) .hover-tag {
+        transition-delay: 0.05s !important;
+    }
+
+    /* 🟢 Hindi Comment: JAISE HI MOUSE HOVER HOGA, text upar se neeche slide hokar dikhega */
+    .cnt:hover .hover-tag,
+    .cnt:active .hover-tag {
+        opacity: 1 !important;                   /* 👈 Hover par visible hoga */
+        transform: translateY(0) !important;     /* 👈 Upar se neeche slide hokar aayega */
+    }
+
+    .featured-box .mobile-featured-arrow {
+        display: block !important;
+        width: 65px !important;
+        height: 65px !important;
+        position: relative !important;
+        transform: scaleX(-1) !important;
+        margin-left: 70vw;
+        margin-top: -45vw;
+    }
+
+    .featured-box .mobile-featured-arrow path {
+        stroke: #fff !important;
+    }
+
+    .featured-box {
+        width: 100%;
+        margin-top: 34vw;
+    }
+
+    .featured-label {
+        font-size: 10px;
+        margin-top: 4vw;
+        margin-left: 2.3vw;
+    }
+
+    .featured-title {
+        font-size: 5vw;
+        margin-top: 6vw;
+        color: #fff;
+        margin-left: 2.3vw;
+    }
+
+    .featured-img {
+        width: 100vw !important;
+        height: 48vw;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 5vw;
+        margin-left: 3vw;
+    }
+
+    .featured-img img {
+        width: 85% !important;
+        height: 100% !important;
+        object-fit: cover;
+        display: block;
+    }
+
+    .featured-desc {
+        font-size: 2.8vw;
+        margin-top: 4vw;
+        line-height: 1.5;
+        margin-left: 2.3vw;
+    }
+
+
+    /* =========================
+       EXPERIENCE
+    ========================= */
+
     .experience-section {
+        background-color: #1a1a1a;
         min-height: auto;
         padding: 15vw 5vw;
     }
 
     .experience-section .worknew h1 {
         font-size: 13vw;
+        color: #fff;
     }
 
     .experience-section .worknew svg {
@@ -2149,17 +2466,25 @@ body.loader-active {
 
     .experience-content h2 {
         font-size: 11px;
-        margin: 0;
+        margin-left: 35vw;
+        margin-top: -9vw;
     }
 
     .experience-content p {
         font-size: 4vw;
         line-height: 1.6;
         margin: 3vw 0 0 0;
+        color: white;
     }
 
-    /* EDUCATION */
+
+    /* =========================
+       EDUCATION
+    ========================= */
+
     #education {
+        background-color: black;
+        position: relative;
         width: 100%;
         min-height: auto;
         padding: 15vw 5vw;
@@ -2169,89 +2494,172 @@ body.loader-active {
     }
 
     #education .achievement-heading {
+        transform: translateY(-25vw);
         width: 100%;
+    }
+
+    #education .education-item h2 {
+        margin-left: 5vw;
+        font-size: 4vw !important;
     }
 
     #education .achievement-heading h2 {
         position: static;
-        margin: 4vw 0 0 0;
+        margin: 4vw 0 0 30vw;
+        margin-top: -2vw;
     }
 
     #education .achievement-list {
         width: 100%;
         margin-left: 0;
-        margin-top: 6vw;
+        margin-top: -10vw;
     }
 
-    /* END / FOOTER */
-    .end {
-        min-height: auto;
-        padding: 18vw 5vw 12vw;
+
+      /* =====================================================
+       LAST PAGE / CONTACT (MOBILE ONLY)
+    ===================================================== */
+
+   .end {
+        position: relative;
+        overflow: hidden;
+        background: #1a1a1a !important;
+        
+        /* 🟢 Page Ka Size/Height Badhane Ke Liye: */
+        min-height: 135vh;        /* 👈 Pure phone screen ki poori height lega */
+        padding: 22vw 6vw 18vw;   /* 👈 Upar (22vw) aur Neeche (18vw) se page lamba aur bada ho jayega */
     }
 
-    .end h1 {
-        font-size: 9.5vw;
-        line-height: 1.1;
+
+    /* 🟢 Bada Gol Background Glow (#1a1a1a ke sath blend hota hua) */
+        /* 🟢 Pura Page Cover Karne Wala Perfectly Centered Gol (Circle) */
+           /* 🟢 Pura Page Cover Karne Wala Perfectly Centered (Left Shifted) Gol */
+    
+           .end-glow {
+    position: absolute;
+    top: 35%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 !important;
+    right: auto;
+
+    width: 170vw;
+    height: 190vw;
+    border-radius: 50%;
+    background: #939191;
+    pointer-events: none;
+    z-index: 0;
+}
+
+    .end .etext {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        gap: 0;
     }
 
-    .etext svg {
-        position: static;
-        margin: 4vw 0 0 0;
-        width: 30px;
-        height: 30px;
+    .end .etext h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 13.8vw;
+        text-transform: initial;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        margin-top: -26vw;
+        margin-bottom: 6vw; /* Extra black space hataya */
     }
 
+    .end .etext h1 .last-word {
+        display: block;
+    }
+
+
+    .end .etext h1 .last-word{
+        margin-left: 6vw;
+    }
+    .end .etext h1 .connect-word {
+        display: block;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        margin-left: -10vw;
+    }
+
+    .end .etext h1 .nn {
+        font-family: 'MaziusDisplay', sans-serif;
+        color: #14cf93;
+    }
+
+    .end .etext h1 .eline:nth-child(n + 3) {
+        display: none !important;
+    }
+
+    .end .etext svg {
+        display: none !important;
+    }
+
+    /* Buttons */
     .btn {
+        position: relative;
+        z-index: 1;
         width: 100%;
         flex-direction: column;
         gap: 3vw;
-        margin-top: 8vw;
+        margin-top: 4vw;
     }
 
     .btn-item {
         width: 100%;
-        min-width: unset;
-        height: 14vw;
-        min-height: 52px;
-        font-size: 3.8vw;
+        min-width: 100%;
+        height: 20vw;
+        min-height: 60px;
+        font-size: 3vw;
         border-radius: 40px;
+    }
+
+    /* Socials Section */
+    .lst {
+        position: relative;
+        z-index: 1;
+        width: 100%;
     }
 
     .socials {
         width: 100%;
         flex-direction: column;
-        gap: 2vw;
-        margin-top: 10vw;
+        gap: 0;
+       padding-top:16vw;
     }
 
     .socials a {
         width: 100%;
-        padding: 3.5vw 0;
+        /* Upar 5.5vw padding di hai taaki line se Github/LinkedIn text halka niche move ho jaye */
+        padding: 5.5vw 1.5vw 3.5vw 0; 
+        border-top: 1px solid #fff;
+    }
+
+    .social-text {
+        gap: 0.8vw;
     }
 
     .social-name {
         font-size: 4.5vw;
+        line-height: 1.2;
     }
 
     .social-handle {
-        font-size: 3vw;
+        font-size: 3.2vw;
     }
 
     .social-icon {
-        width: 32px;
-        height: 32px;
+        width: 40px;
+        height: 40px;
     }
 
-    /* MOBILE ME DESKTOP CURSOR & BADGE OFF */
-    #cursor {
-        display: none !important;
+    .socials a:hover .social-icon {
+        background: #1a1a1a;
     }
 
-    .site-day {
-        display: none !important;
-    }
 
-    .cnt {
-        cursor: pointer;
+        body.loader-active #nav {
+        display: none;
     }
 }

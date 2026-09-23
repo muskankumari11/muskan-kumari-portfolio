@@ -18,7 +18,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ==== LOCOMOTIVE SCROLL FIX ==== */
 html.has-scroll-smooth {
     overflow: hidden;
 }
@@ -34,7 +33,6 @@ html.has-scroll-smooth body {
     min-height: 100vh;
 }
 
-/* ==== END LOCOMOTIVE SCROLL FIX ==== */
 
 #main {
     width: 100%;
@@ -774,7 +772,7 @@ html.has-scroll-smooth body {
     width: 100% !important;
 }
 
-/* SEE PLAYBOOK */
+/* SEE CHATBOT*/
 .chat-btn {
     position: relative;
     overflow: hidden;
@@ -1359,7 +1357,6 @@ html.has-scroll-smooth body {
     opacity: 1;
 }
 
-/* SOCIALS text ke peeche white card */
 
 .nav-socials::before {
     content: "";
@@ -1506,7 +1503,6 @@ body.loader-active {
     letter-spacing: -.03em;
 }
 
-/* IMAGE AREA - border ke andar fixed */
 
 .cnt .img-wrapper {
     position: absolute;
@@ -1550,7 +1546,7 @@ body.loader-active {
 }
 
 /* =========================================================
-   PROJECT HOVER CURSOR (ABHISHEK JHA PERFECT CENTER ALIGNED)
+   PROJECT HOVER CURSOR
 ========================================================= */
 
 #cursor {
@@ -1588,7 +1584,7 @@ body.loader-active {
     z-index: 20;
 }
 
-/* GOL CIRCLE */
+/* CIRCLE */
 #cursor .ccircle {
     position: absolute !important;
     top: 0 !important;
@@ -1614,7 +1610,7 @@ body.loader-active {
     justify-content: center;
 }
 
-/* PILL CAPSULE */
+/* CAPSULE */
 #cursor .ccapsule {
     position: absolute !important;
     top: 0 !important;
@@ -1650,7 +1646,7 @@ body.loader-active {
     margin-top: -10px !important;
 }
 
-/* PREVIEW BOX */
+/* BOX */
 #cursor #elem {
     position: absolute !important;
     top: 28px !important;
@@ -1697,12 +1693,7 @@ body.loader-active {
 
 
 
-/* =========================================================================
-   📱 MOBILE & OTHER DEVICES RESPONSIVE MEDIA QUERIES (ABHISHEK JHA STYLE)
-   NOTE: This is the ONE AND ONLY mobile media query block.
-   Everything inside here applies ONLY at 768px and below.
-   Desktop/laptop uses the rules above, untouched.
-========================================================================= */
+
 
 @media (max-width: 768px) {
 
@@ -1711,9 +1702,16 @@ body.loader-active {
     ========================= */
 
     
-        #loader h1.reveal {
+     body.loader-active #nav {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+    #loader h1.reveal {
         opacity: 0;
     }
+
     body {
         background-color: black;
     }
@@ -1771,14 +1769,14 @@ body.loader-active {
     #nav a:hover .line2 {
         background: #fff;
         bottom: 17px;
-        width: 75%;
+        width: 90%;
         transition: none;
-        margin-right: 3vw;
+        margin-right: 1.5vw;
     }
 
     #nav a:nth-child(4) .line2,
     #nav a:nth-child(4):hover .line2 {
-        width: 61%;
+        width: 75%;
     }
 
 
@@ -1900,7 +1898,7 @@ body.loader-active {
 
 
     /* =========================
-       IMAGERY (images before about text)
+       IMAGERY 
     ========================= */
 
     #imagery {
@@ -2008,7 +2006,7 @@ body.loader-active {
 
     .help-heading h1 {
         margin-left: 20vw;
-        margin-top: -10px;
+        margin-top: -1px;
         font-size: 12px;
         white-space: nowrap;
     }
@@ -2020,7 +2018,7 @@ body.loader-active {
     .cap-list h2 {
         font-size: 19px;
         margin-left: 5vw;
-        margin-top: -14vw;
+        margin-top: -8vw;
         color: #fff;
     }
 
@@ -2332,10 +2330,8 @@ body.loader-active {
     }
 
 
-    /* FEATURED BOX — MOBILE ONLY */
-
         /* =========================================================
-       PROJECT HOVER TAGS (YEAR & ROLE ANIMATION)
+       PROJECT HOVER TAGS (YEAR & ROLE)
     ========================================================= */
 
     .cnt-hover-info,
@@ -2345,44 +2341,35 @@ body.loader-active {
     .cnt-hover-five {
         position: absolute !important;
         left: 5vw !important;
-        
-        /* 🟢 Hindi Comment: Image par dono text ko HALKA NEECHE laane ke liye top: 7.5vw kiya hai */
         top: 49vw !important; 
-        
-        /* bottom: auto !important; */
         gap: 1.8vw !important;
         z-index: 6 !important;
         pointer-events: none !important;
     }
-
-    /* 🟢 Hindi Comment: Mask container jo text ko bahar nahi dikhne dega */
     .hover-mask {
         display: block !important;
-        overflow: hidden !important; /* 👈 Shuruat me text ko chhupa ke rakhega */
+        overflow: hidden !important; 
     }
 
-    /* 🟢 Hindi Comment: Shuru me (Jab tak hover na ho) text bilkul gayab (hidden) rahega */
     .hover-tag {
         display: block !important;
         font-size: 2.8vw !important;
         padding: 1.6vw 3.8vw !important;
         
-        opacity: 0 !important;                   /* 👈 Bina hover ke bilkul nahi dikhega */
-        transform: translateY(-130%) !important; /* 👈 Mask ke upar chhipa rahega */
+        opacity: 0 !important;                  
+        transform: translateY(-130%) !important; 
         
         transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s ease !important;
     }
 
-    /* 🟢 Hindi Comment: Doosre tag (ROLE) ke liye halka delay taaki dono ek ke baad ek aaye */
     .cnt .hover-mask:nth-child(2) .hover-tag {
         transition-delay: 0.05s !important;
     }
 
-    /* 🟢 Hindi Comment: JAISE HI MOUSE HOVER HOGA, text upar se neeche slide hokar dikhega */
     .cnt:hover .hover-tag,
     .cnt:active .hover-tag {
-        opacity: 1 !important;                   /* 👈 Hover par visible hoga */
-        transform: translateY(0) !important;     /* 👈 Upar se neeche slide hokar aayega */
+        opacity: 1 !important;                   
+        transform: translateY(0) !important;    
     }
 
     .featured-box .mobile-featured-arrow {
@@ -2521,25 +2508,20 @@ body.loader-active {
 
 
       /* =====================================================
-       LAST PAGE / CONTACT (MOBILE ONLY)
+       LAST PAGE / CONTACT 
     ===================================================== */
 
    .end {
         position: relative;
         overflow: hidden;
         background: #1a1a1a !important;
-        
-        /* 🟢 Page Ka Size/Height Badhane Ke Liye: */
-        min-height: 135vh;        /* 👈 Pure phone screen ki poori height lega */
-        padding: 22vw 6vw 18vw;   /* 👈 Upar (22vw) aur Neeche (18vw) se page lamba aur bada ho jayega */
+        min-height: 135vh;       
+        padding: 22vw 6vw 18vw;   
     }
 
 
-    /* 🟢 Bada Gol Background Glow (#1a1a1a ke sath blend hota hua) */
-        /* 🟢 Pura Page Cover Karne Wala Perfectly Centered Gol (Circle) */
-           /* 🟢 Pura Page Cover Karne Wala Perfectly Centered (Left Shifted) Gol */
     
-           .end-glow {
+    .end-glow {
     position: absolute;
     top: 35%; 
     left: 50%;
@@ -2570,7 +2552,7 @@ body.loader-active {
         text-transform: initial;
         font-family: 'Plus Jakarta Sans', sans-serif;
         margin-top: -26vw;
-        margin-bottom: 6vw; /* Extra black space hataya */
+        margin-bottom: 6vw; 
     }
 
     .end .etext h1 .last-word {
@@ -2635,7 +2617,6 @@ body.loader-active {
 
     .socials a {
         width: 100%;
-        /* Upar 5.5vw padding di hai taaki line se Github/LinkedIn text halka niche move ho jaye */
         padding: 5.5vw 1.5vw 3.5vw 0; 
         border-top: 1px solid #fff;
     }
@@ -2660,10 +2641,5 @@ body.loader-active {
 
     .socials a:hover .social-icon {
         background: #1a1a1a;
-    }
-
-
-        body.loader-active #nav {
-        display: none;
     }
 }

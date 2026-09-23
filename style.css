@@ -1762,14 +1762,14 @@ body.loader-active {
     #nav a:hover .line2 {
         background: #fff;
         bottom: 17px;
-        width: 75%;
+        width: 80%;
         transition: none;
-        margin-right: 3vw;
+        margin-right: 2vw;
     }
 
     #nav a:nth-child(4) .line2,
     #nav a:nth-child(4):hover .line2 {
-        width: 65%;
+        width: 72%;
     }
 
 

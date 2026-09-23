@@ -39,6 +39,10 @@ html.has-scroll-smooth body {
     overflow-x: hidden;
 }
 
+/* =========================================================
+   LOADER (Z-INDEX 999999 — HIGHEST TO COVER NAVBAR)
+========================================================= */
+
 #loader {
     position: fixed;
     inset: 0;
@@ -46,7 +50,17 @@ html.has-scroll-smooth body {
     height: 100vh;
     background: #111;
     color: #fff;
-    z-index: 99999;
+    z-index: 999999; /* 👈 Sabse upar rahega */
+}
+
+#green {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #14CF93;
+    z-index: 999998; /* 👈 Loader ke theek niche */
 }
 
 #loader h1 {
@@ -60,8 +74,6 @@ html.has-scroll-smooth body {
     font-size: 4.5vw;
     font-weight: 500;
 }
-
-
 
 #loader h1 span {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -84,14 +96,12 @@ html.has-scroll-smooth body {
     letter-spacing: 1.5px;
 }
 
-#green {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: #14CF93;
-    z-index: 99998;
+/* Loader ke time Navbar 100% chupa rahega */
+body.loader-active #nav {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 .reveal .parent {
@@ -121,12 +131,16 @@ html.has-scroll-smooth body {
     padding-top: 100px;
 }
 
+/* =========================================================
+   NAVBAR (Z-INDEX 9999 — UNDER LOADER)
+========================================================= */
+
 #nav {
     position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 999999;
+    z-index: 9999; /* 👈 Loader ke niche rahega jab tak loader active hai */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1357,7 +1371,6 @@ html.has-scroll-smooth body {
     opacity: 1;
 }
 
-
 .nav-socials::before {
     content: "";
     position: absolute;
@@ -1456,7 +1469,7 @@ polyline {
     transform: translate(0, -50%);
 }
 
-/* LOADER */
+/* LOADER SPIN */
 
 body.loader-active {
     overflow: hidden;
@@ -1503,7 +1516,6 @@ body.loader-active {
     letter-spacing: -.03em;
 }
 
-
 .cnt .img-wrapper {
     position: absolute;
     width: 100%;
@@ -1511,8 +1523,6 @@ body.loader-active {
     overflow: hidden;
     border-radius: 40px !important;
 }
-
-/* ONLY IMAGE MOVES */
 
 .cnt .img-wrapper img {
     position: absolute;
@@ -1559,7 +1569,6 @@ body.loader-active {
     pointer-events: none !important;
 }
 
-/* Cursor Content */
 #cursor .cursor-content {
     position: fixed !important;
     top: 0;
@@ -1574,7 +1583,6 @@ body.loader-active {
     z-index: 9999999;
 }
 
-/* Row anchor */
 #cursor .crow {
     position: absolute !important;
     top: -7px !important;
@@ -1584,7 +1592,6 @@ body.loader-active {
     z-index: 20;
 }
 
-/* CIRCLE */
 #cursor .ccircle {
     position: absolute !important;
     top: 0 !important;
@@ -1610,7 +1617,6 @@ body.loader-active {
     justify-content: center;
 }
 
-/* CAPSULE */
 #cursor .ccapsule {
     position: absolute !important;
     top: 0 !important;
@@ -1629,7 +1635,6 @@ body.loader-active {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* HAND ICON */
 #cursor-hand {
     position: fixed !important;
     top: 0;
@@ -1646,7 +1651,6 @@ body.loader-active {
     margin-top: -10px !important;
 }
 
-/* BOX */
 #cursor #elem {
     position: absolute !important;
     top: 28px !important;
@@ -1692,25 +1696,15 @@ body.loader-active {
 }
 
 
-
-
+/* =========================================================
+   MOBILE MEDIA QUERY
+========================================================= */
 
 @media (max-width: 768px) {
 
     /* =========================
        BODY / HOME
     ========================= */
-
-    
-     body.loader-active #nav {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-    }
-    #loader h1.reveal {
-        opacity: 0;
-    }
 
     body {
         background-color: black;
@@ -1735,7 +1729,6 @@ body.loader-active {
         align-items: center;
         gap: 2vw;
         text-align: center;
-        z-index: 9000;
     }
 
 
@@ -1769,14 +1762,14 @@ body.loader-active {
     #nav a:hover .line2 {
         background: #fff;
         bottom: 17px;
-        width: 90%;
+        width: 80%;
         transition: none;
-        margin-right: 1.5vw;
+        margin-right: 2vw;
     }
 
     #nav a:nth-child(4) .line2,
     #nav a:nth-child(4):hover .line2 {
-        width: 75%;
+        width: 70%;
     }
 
 
@@ -2117,7 +2110,7 @@ body.loader-active {
         transform: none;
     }
 
-       .sd {
+    .sd {
         width: 100%;
         height: auto;
         padding: 0 5vw;
@@ -2127,8 +2120,6 @@ body.loader-active {
     .cnt .img-wrapper {
         border-radius: 28px !important;
     }
-
-
     
     .cnt img {
         border-radius: 28px;
@@ -2330,7 +2321,7 @@ body.loader-active {
     }
 
 
-        /* =========================================================
+    /* =========================================================
        PROJECT HOVER TAGS (YEAR & ROLE)
     ========================================================= */
 
@@ -2346,6 +2337,7 @@ body.loader-active {
         z-index: 6 !important;
         pointer-events: none !important;
     }
+
     .hover-mask {
         display: block !important;
         overflow: hidden !important; 
@@ -2355,10 +2347,8 @@ body.loader-active {
         display: block !important;
         font-size: 2.8vw !important;
         padding: 1.6vw 3.8vw !important;
-        
         opacity: 0 !important;                  
         transform: translateY(-130%) !important; 
-        
         transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s ease !important;
     }
 
@@ -2507,11 +2497,11 @@ body.loader-active {
     }
 
 
-      /* =====================================================
+    /* =====================================================
        LAST PAGE / CONTACT 
     ===================================================== */
 
-   .end {
+    .end {
         position: relative;
         overflow: hidden;
         background: #1a1a1a !important;
@@ -2519,23 +2509,20 @@ body.loader-active {
         padding: 22vw 6vw 18vw;   
     }
 
-
-    
     .end-glow {
-    position: absolute;
-    top: 35%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0 !important;
-    right: auto;
-
-    width: 170vw;
-    height: 220vw;
-    border-radius: 50%;
-    background: #939191;
-    pointer-events: none;
-    z-index: 0;
-}
+        position: absolute;
+        top: 35%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0 !important;
+        right: auto;
+        width: 170vw;
+        height: 220vw;
+        border-radius: 50%;
+        background: #939191;
+        pointer-events: none;
+        z-index: 0;
+    }
 
     .end .etext {
         position: relative;
@@ -2557,12 +2544,9 @@ body.loader-active {
 
     .end .etext h1 .last-word {
         display: block;
-    }
-
-
-    .end .etext h1 .last-word{
         margin-left: 6vw;
     }
+
     .end .etext h1 .connect-word {
         display: block;
         font-family: 'Plus Jakarta Sans', sans-serif;
@@ -2612,7 +2596,7 @@ body.loader-active {
         width: 100%;
         flex-direction: column;
         gap: 0;
-       padding-top:16vw;
+        padding-top: 16vw;
     }
 
     .socials a {

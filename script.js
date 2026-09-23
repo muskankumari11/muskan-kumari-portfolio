@@ -90,6 +90,10 @@ const loaderTimeline = gsap.timeline();
 loaderTimeline
 .addLabel("intro")
 
+.set("#loader h1.reveal", {
+    opacity: isMobileOrTablet ? 1 : "auto"
+}, "intro")
+
 .from("#loader .child span:nth-child(1), #loader .child b", {
     x: 100,
     duration: 1.5,

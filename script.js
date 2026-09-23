@@ -243,7 +243,18 @@ preloadProjectImages();
    DESKTOP = hover, MOBILE/TABLET = tap
 ========================================================= */
 
+/* =========================================================
+   FEAT WORKS HOVER EFFECT
+   (Sirf Laptop par chalega, Mobile par bilkul OFF rahega)
+========================================================= */
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
 function cardHoverrEffect() {
+
+    // 🟢 Hindi Comment: Mobile aur Tablet par ye hover images aur background color change BILKUL NAHI chalega
+    if (isMobileOrTablet) return;
 
     const cursor = document.querySelector("#cursor");
     const cursorContent = document.querySelector(".cursor-content");
@@ -253,13 +264,11 @@ function cardHoverrEffect() {
 
     if (!cursor || !cursorContent || !elemContainer || !handIcon) return;
 
-    if (!isMobileOrTablet) {
-        if (cursor.parentElement !== document.body) {
-            document.body.appendChild(cursor);
-        }
-        if (handIcon.parentElement !== document.body) {
-            document.body.appendChild(handIcon);
-        }
+    if (cursor.parentElement !== document.body) {
+        document.body.appendChild(cursor);
+    }
+    if (handIcon.parentElement !== document.body) {
+        document.body.appendChild(handIcon);
     }
 
     let slideTimer = null;
@@ -268,22 +277,19 @@ function cardHoverrEffect() {
 
     const capsule = cursorContent.querySelector(".ccapsule");
 
-    if (!isMobileOrTablet) {
+    const moveX = gsap.quickTo(cursorContent, "left", { duration: 0.35, ease: "power3.out" });
+    const moveY = gsap.quickTo(cursorContent, "top", { duration: 0.35, ease: "power3.out" });
+    const moveHandX = gsap.quickTo(handIcon, "left", { duration: 0.08, ease: "power3.out" });
+    const moveHandY = gsap.quickTo(handIcon, "top", { duration: 0.08, ease: "power3.out" });
 
-        const moveX = gsap.quickTo(cursorContent, "left", { duration: 0.35, ease: "power3.out" });
-        const moveY = gsap.quickTo(cursorContent, "top", { duration: 0.35, ease: "power3.out" });
-        const moveHandX = gsap.quickTo(handIcon, "left", { duration: 0.08, ease: "power3.out" });
-        const moveHandY = gsap.quickTo(handIcon, "top", { duration: 0.08, ease: "power3.out" });
-
-        document.addEventListener("mousemove", (event) => {
-            mouseX = event.clientX;
-            mouseY = event.clientY;
-            moveX(event.clientX);
-            moveY(event.clientY);
-            moveHandX(event.clientX);
-            moveHandY(event.clientY);
-        });
-    }
+    document.addEventListener("mousemove", (event) => {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+        moveX(event.clientX);
+        moveY(event.clientY);
+        moveHandX(event.clientX);
+        moveHandY(event.clientY);
+    });
 
     const abhishekColors = {
         "cnt1": "#D7DDF2",
@@ -291,15 +297,6 @@ function cardHoverrEffect() {
         "cnt3": "#D5E4D8",
         "cnt4": "#E8DFD5",
         "cnt5": "#E5D8EB"
-    };
-
-    // Mobile ke liye dark theme wale muted colors (white avoid karne ke liye)
-    const mobileColors = {
-        "cnt1": "#3a3f52",
-        "cnt2": "#4a3838",
-        "cnt3": "#38453d",
-        "cnt4": "#453e33",
-        "cnt5": "#42384a"
     };
 
     function startSlideshow(imageList) {
@@ -346,12 +343,10 @@ function cardHoverrEffect() {
             .filter(Boolean);
 
         let cardColor = "#D7DDF2";
-        let mobileCardColor = "#3a3f52";
 
         for (const cls in abhishekColors) {
             if (cnt.classList.contains(cls)) {
                 cardColor = abhishekColors[cls];
-                mobileCardColor = mobileColors[cls] || mobileCardColor;
                 break;
             }
         }
@@ -368,6 +363,7 @@ function cardHoverrEffect() {
 
         const hoverTags = cnt.querySelectorAll(".hover-tag");
 
+        // 🟢 Laptop ke liye activate
         function activateCard() {
 
             startSlideshow(imageList);
@@ -394,7 +390,7 @@ function cardHoverrEffect() {
 
             if (workSection) {
                 gsap.to(workSection, {
-                    backgroundColor: isMobileOrTablet ? mobileCardColor : cardColor,
+                    backgroundColor: cardColor,
                     duration: 0.65,
                     ease: "power2.out",
                     overwrite: "auto"
@@ -402,6 +398,7 @@ function cardHoverrEffect() {
             }
         }
 
+        // 🟢 Laptop ke liye deactivate
         function deactivateCard() {
 
             cursorContent.style.opacity = "0";
@@ -416,7 +413,7 @@ function cardHoverrEffect() {
 
             if (workSection) {
                 gsap.to(workSection, {
-                    backgroundColor: isMobileOrTablet ? "#1a1a1a" : "#f2f2f2",
+                    backgroundColor: "#f2f2f2",
                     duration: 0.65,
                     ease: "power2.out",
                     overwrite: "auto"
@@ -426,53 +423,13 @@ function cardHoverrEffect() {
             clearInterval(slideTimer);
         }
 
-        if (isMobileOrTablet) {
-
-            let tapCount = 0;
-
-            cnt.addEventListener("touchstart", function (e) {
-
-                if (!cnt.classList.contains("mobile-active")) {
-
-                    document.querySelectorAll(".cnt.mobile-active").forEach(other => {
-                        if (other !== cnt) {
-                            other.classList.remove("mobile-active");
-                            if (other._deactivateCard) other._deactivateCard();
-                        }
-                    });
-
-                    cnt.classList.add("mobile-active");
-
-                    if (workSection) {
-                        workSection.style.backgroundColor = mobileCardColor;
-                    }
-
-                    activateCard();
-                    tapCount = 0;
-                } else {
-                    tapCount = 1;
-                }
-
-            }, { passive: true });
-
-            cnt.addEventListener("click", function (e) {
-
-                if (tapCount === 0 && cnt.classList.contains("mobile-active")) {
-                    e.preventDefault();
-                }
-
-            });
-
-            cnt._deactivateCard = deactivateCard;
-
-        } else {
-
-            cnt.addEventListener("mouseenter", activateCard);
-            cnt.addEventListener("mouseleave", deactivateCard);
-        }
+        // 🟢 Hindi Comment: Laptop/Desktop par Mouse Hover event chalega
+        cnt.addEventListener("mouseenter", activateCard);
+        cnt.addEventListener("mouseleave", deactivateCard);
 
     });
 }
+
 cardHoverrEffect();
 
 
